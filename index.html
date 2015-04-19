@@ -24,6 +24,19 @@ Matt Thompson, EngD at University of Bath & Sysemia Ltd
 <!-- ![Default-aligned-image](img/punchJudy.png) -->
 
 ---
+layout: false
+class: inverse
+
+# Overview
+
+1. Punch and Judy
+2. Propp & narrative model 
+3. Institutions/social model
+4. Answer Set Programming
+5. Emotional model
+6. Architecture
+
+---
 class: center, inverse
 
 # What is Punch and Judy?
@@ -95,21 +108,36 @@ Modelling stories as 'social' norms.
 
 # Institutions: events
 
-Events can be:
-
 - __External__ (triggered by the agents or environment)
+`$$
+\begin{align}
+\mathcal{E}_{ext} =& \left\{\texttt{leavestage, enterstage, die, give, hit}\right\}
+\end{align}
+$$`
 - __Internal__ (triggered inside the institution)
-- __Violation__ (triggered when an obligation is violated)
+`$$
+\begin{align}
+\mathcal{E}_{inst} =& \left\{\texttt{interdiction, absentation, violation}\right\}
+\end{align}
+$$`
 
----
+- __Violation__ (triggered when an obligation is violated)
+`$$
+\begin{align}
+\mathcal{E}_{viol} =& \left\{\texttt{viol(interdiction), viol(absentation),}\right.\\
+&\left. {} \texttt{viol(violation)}\right\}
+\end{align}
+$$`
+
+<!--
 
 # Institutions: events
 
 `$$
 \begin{align}
-  \mathcal{E}_{obs} =& \left\{\texttt{startshow, leavestage, enterstage, die, give,}\right.\nonumber\\
+  \mathcal{E}_{ext} =& \left\{\texttt{startshow, leavestage, enterstage, die, give,}\right.\nonumber\\
   &\left. {} \texttt{harmed, hit, fight, kill, escape}\right\}\label{eq:eobs}\\
-  \mathcal{E}_{instact} =& \left\{\texttt{introduction, interdiction, give, absentation,}\right.\nonumber\\
+  \mathcal{E}_{inst} =& \left\{\texttt{introduction, interdiction, give, absentation,}\right.\nonumber\\
                          &\left. {} \texttt{violation, return, struggle, defeat, complicity,}\right.\nonumber\\
                          &\left. {} \texttt{victory, escape}\right\}\label{eq:einst}\\
   \mathcal{E}_{viol} =& \left\{\texttt{viol(introduction), viol(interdiction), viol(give),}\right.\nonumber\\
@@ -119,6 +147,7 @@ Events can be:
 \end{align}
 $$`
 
+-->
 
 ---
 
@@ -136,6 +165,7 @@ $$`
 
 ---
 
+<!--
 # Institutions: powers
 
 An __institutional power__ describes whether or not an __external__ event has the authority to generate an __institutional__ event.
@@ -147,7 +177,7 @@ An __institutional power__ describes whether or not an __external__ event has th
 \end{align}
 $$`
 
----
+-->
 
 # Institutions: permissions
 
@@ -168,12 +198,19 @@ __Obligations__ are actions that agents _should_ do before a certain deadline, o
 
 `$$
 \begin{align}
-  \mathcal{O} =& \left\{\text{obl}(\texttt{leavestage, absentation, viol(absentation)})\right\}\label{eq:obl}
+  \mathcal{O} =& \left\{\text{obl}(\texttt{leavestage, struggle, viol(struggle)})\right\}\label{eq:obl}
 \end{align}
 $$`
 
 ---
 
+# Event generation and consequences
+
+- External events generate internal events
+- But only if certain fluents hold at that time
+- Permissions and obligations are initiated and terminated as consequences of internal events
+
+<!--
 # Event generation
 
 `$$
@@ -191,7 +228,6 @@ $$`
 \end{align}
 $$`
 
----
 
 # Consequences
 
@@ -210,6 +246,8 @@ $$`
 \end{align}
 $$`
 
+-->
+
 ---
 class: center, middle, inverse
 
@@ -222,17 +260,7 @@ Using ASP to reason about institutional norms
 
 - DSL for describing institutions
 - based on the situation and event calculi
-- compiles to ansProlog (ASP)
-
----
-
-# InstAL example
-If an agent with the role of donor leaves the stage, it generates the _absentation_ Propp story function in the institution:
-
-```
-leaveStage(X) generates intAbsentation(X)
-    if role(X, dispatcher), activeFunction(interdiction);
-```
+- compiles to AnsProlog (ASP)
 
 ---
 
@@ -255,6 +283,13 @@ intAbsentation(X) terminates
 
 ---
 
+# ASP and events
+
+- the list of events so far is used to query the _clingo_ solver
+- clingo solves against the ASP institution description
+- current permissions and obligations are output
+
+---
 # ASP sausages
 
 
@@ -298,17 +333,22 @@ class: center
 
 ---
 
+# Audience interaction
+
+- The puppets' emotions are affected by the cheering or booing from the audience.
+- Agents announce what they are about to do
+- The audience cheers or boos
+- Valence, arousal or dominance are raised or lowered
+- Emotional variable changed depends on action
+
+
+---
+
 class: middle, center, inverse
 
 # Architecture
 
 Linking it all together
-
----
-class: center
-
-
-![Default-aligned-image](img/arch1.png)
 
 ---
 
@@ -325,12 +365,10 @@ In this case:
 
 ---
 
-# ASP and events
+class: center
 
-- the list of events so far is used to query the _clingo_ solver
-- clingo solves against the ASP institution description
-- current permissions and obligations are output
 
+![Default-aligned-image](img/arch1.png)
 
 ---
 
