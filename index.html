@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Interactive Narrative</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <link rel="stylesheet" type="text/css" href="css/style.css"/>
   </head>
@@ -11,47 +11,104 @@
 class: center, middle, inverse
 layout: true
 
----
+<!-- TODO:
+   ~ Civ/sims pic 
+   ~ Choose your own adventure/FF pic
+   ~ Branching diagram 1
+   ~ Branching diagram 2
+   ~ Facade vid + pic
+   ~ Vonnegut pic
+   ~ Punch and Judy pic
+   ~ Emotions section
+   ~ Timing
 
-<!-- more pics would be nice -->
-
-# An interactive, generative Punch and Judy show
-...using institutions, ASP and emotional agents
-
-Matt Thompson, EngD at University of Bath & Sysemia Ltd
-
-<!-- punch and judy image -->
-<!-- ![Default-aligned-image](img/punchJudy.png) -->
-
----
-class: center, inverse
-
-# What is Punch and Judy?
-
-![Default-aligned-image](img/punchjudy.png)
-
-<!--
-
-layout: false
-
-# Display and Inline
-
-1. This is an inline integral: `\(\int_a^bf(x)dx\)`
-2. More `\(x={a \over b}\)` formulae.
-
-Display formula:
-    `$$e^{i\pi} + 1 = 0$$`
 -->
 
 ---
+
+## Experimental Narratives
+
+![Default-aligned-image](img/lizard.jpg)
+
+---
 layout: false
 
-# Why Punch and Judy?
+# Generative narratives
 
-- Extremely simple story domain
-- Simple, well-defined characters
-- Variable set of outcomes
-- Audience interaction
+- No pre-written story or narrative exists.
+- The narrative emerges as a result of a series of complex interactions in the game.
+- This tends to happen in sandbox-style, open-world games
+- Examples: Civilisation, Dwarf Fortress, some MMORPGs
+
+---
+class: inverse, center
+
+![Default-aligned-image](img/civ.png)
+
+---
+
+## Interactive (non-linear) narratives
+
+- The narrative is pre-written with several branches
+- Player's interactions decide which branches play out
+
+---
+class: inverse, center, middle
+
+## Choose Your Own Adventure
+
+<!-- will want a tree diagram here, explain that most are dead ends -->
+<!-- screenshot -->
+![Default-aligned-image](img/choose.jpg)
+
+---
+class: inverse, center, middle
+
+## Fighting Fantasy
+
+![Default-aligned-image](img/lizard.jpg)
+
+---
+class: inverse, center, middle
+# Has anyone done both?
+
+---
+class: center
+
+# Galatea
+
+![Default-aligned-image](img/galatea.jpg)
+
+interactive fiction/text adventure
+
+---
+class: center
+
+# Façade
+
+![Default-aligned-image](img/facade.jpg)
+
+Mateus and Stern - Facade: An Experiment in Building a Fully-Realized Interactive Drama
+
+---
+
+class: center, middle, inverse
+
+# How do you model a narrative?
+
+---
+class: inverse, center
+
+## Joseph Cambell's Monomyth
+
+![Default-aligned-image](img/hero.jpg)
+
+---
+class: inverse, center
+
+## Kurt Vonnegut: Shapes of stories
+
+![Default-aligned-image](img/shapes.png)
 
 ---
 class: center, inverse
@@ -73,6 +130,42 @@ class: center, inverse
 
 ---
 
+class: center, middle, inverse
+
+# How to make a generative, interactive narrative
+
+---
+
+
+class: center, middle, inverse
+
+# That's the way to do it!
+
+<!-- Punch and Judy image -->
+
+---
+layout: false
+
+# Why Punch and Judy?
+
+- Extremely simple story domain
+- Simple, well-defined characters
+- Variable set of outcomes
+- Audience interaction
+
+---
+
+# Implementation
+
+Three layers:
+
+- narrative manager
+- multi-agent system
+- environment (animation)
+
+
+---
+
 # P&J Scene Using Propp
 
 1. Joey tells Punch to look after the sausages (_interdiction_).
@@ -91,266 +184,25 @@ class: center, middle, inverse
 
 Modelling stories as 'social' norms.
 
----
-
-# Institutions: events
-
-Events can be:
-
-- __External__ (triggered by the agents or environment)
-- __Internal__ (triggered inside the institution)
-- __Violation__ (triggered when an obligation is violated)
+<!-- add details from other slides -->
 
 ---
 
-# Institutions: events
+# Emotions
 
-`$$
-\begin{align}
-  \mathcal{E}_{obs} =& \left\{\texttt{startshow, leavestage, enterstage, die, give,}\right.\nonumber\\
-  &\left. {} \texttt{harmed, hit, fight, kill, escape}\right\}\label{eq:eobs}\\
-  \mathcal{E}_{instact} =& \left\{\texttt{introduction, interdiction, give, absentation,}\right.\nonumber\\
-                         &\left. {} \texttt{violation, return, struggle, defeat, complicity,}\right.\nonumber\\
-                         &\left. {} \texttt{victory, escape}\right\}\label{eq:einst}\\
-  \mathcal{E}_{viol} =& \left\{\texttt{viol(introduction), viol(interdiction), viol(give),}\right.\nonumber\\
- &\left. {} \texttt{viol(absentation), viol(violation), viol(return),}\right.\nonumber\\
- &\left. {} \texttt{viol(struggle), viol(defeat), viol(complicity)}\right.\nonumber\\
- &\left. {} \texttt{viol(victory), viol(escape)}\right\}\label{eq:viol}
-\end{align}
-$$`
-
+Agents and emotional models
 
 ---
 
-# Institutions: fluents
+# Real-world narratives
 
-__Fluents__ are properties that may or may not hold true at some instant in time.
-
-__Domain fluents__ describe domain-specific properties.
-
-`$$
-\begin{align}
-    \mathcal{D} =& \left\{\texttt{onstage, hero, villain, victim, donor, item}\right\}\label{eq:domain}
-\end{align}
-$$`
+<!-- "Valley of desolation" pic here -->
 
 ---
 
-# Institutions: powers
+# Every Object Tells a Story
 
-An __institutional power__ describes whether or not an __external__ event has the authority to generate an __institutional__ event.
-
-`$$
-\begin{align}
-\mathcal{W} =& \left\{\texttt{pow(introduction), pow(interdiction), pow(give),}\right.\nonumber\\
-             &\left.\texttt{pow(absentation), pow(violation), pow(return)}\right\}\label{eq:power}
-\end{align}
-$$`
-
----
-
-# Institutions: permissions
-
-__Permissions__ describe the external actions that agents are permitted to carry out.
-
-`$$
-\begin{align}
-\mathcal{M} =& \left\{\texttt{perm(leavestage), perm(enterstage), perm(die),}\right.\nonumber\\
-               &\left.\texttt{perm(kill), perm(hit), perm(give), perm(fight)}\right\}\label{eq:perm}
-\end{align}
-$$`
-
----
-
-# Institutions: obligations
-
-__Obligations__ are actions that agents _should_ do before a certain deadline, otherwise a _violation event_ is triggered.
-
-`$$
-\begin{align}
-  \mathcal{O} =& \left\{\text{obl}(\texttt{leavestage, absentation, viol(absentation)})\right\}\label{eq:obl}
-\end{align}
-$$`
-
----
-
-# Event generation
-
-`$$
-\begin{align}
-    \mathcal{G(X, E)}:&\langle \emptyset,\mathit{tellprotect}\texttt{(donor, villain, item)} \rangle\nonumber\\
-                      &\qquad\qquad\qquad\rightarrow \left\{\mathit{interdiction}\right\}\label{eq:gfirst}\\
-                      &\langle \{\mathit{interdiction}\}, \mathit{agree}\texttt{(villain)})\rangle \nonumber\\
-                      &\qquad\qquad\qquad\rightarrow \left\{\mathit{complicity}\right\}\\
-                      &\langle \emptyset, \mathit{give}\texttt{(donor, villain, item)})\rangle \nonumber\\
-                      &\qquad\qquad\qquad\rightarrow \left\{\mathit{receipt}\right\}\label{eq:receipt}\\
-                      &\langle \{\mathit{interdiction}\}, \mathit{leavestage}(\texttt{donor})\rangle \nonumber\\
-                      &\qquad\qquad\qquad\rightarrow \left\{\mathit{absentation}\right\}\label{eq:absentation}\\
-                      &\langle \{\mathit{interdiction}\}, \mathit{harmed}(\texttt{item})\rangle \nonumber\\
-                      &\qquad\qquad\qquad\rightarrow \left\{\mathit{violation}\right\}
-\end{align}
-$$`
-
----
-
-# Consequences
-
-`$$
-\begin{align}
-    \mathcal{C^{\uparrow}(X, E)}:&\langle\{\mathit{active(interdiction)}\}, \texttt{violation} \rangle \nonumber\\
-                                 &\qquad\qquad\rightarrow \{\text{perm}(\texttt{enterstage(dispatcher)})\}\\
-                                 &\langle\{\mathit{active(absentation), active(violation)}\}, \texttt{return} \rangle\nonumber\\
-                                 &\qquad\qquad\rightarrow \{\text{perm}(\texttt{hit(donor, villain)})\}\\
-    \mathcal{C^{\downarrow}(X, E)}:&\langle \emptyset, \texttt{interdiction} \rangle \nonumber\\
-                                   &\qquad\qquad\rightarrow \{\text{perm}(\texttt{give(donor, villain, item)})\}\\
-                                   &\langle \{\mathit{active(interdiction)}\}, \texttt{violation} \rangle\nonumber\\
-                                   &\qquad\qquad\rightarrow \{\mathit{active(interdiction)}\}\label{eq:interm}\\
-                                   &\langle \{\mathit{active(absentation), active(violation)}\}, \texttt{return} \rangle\nonumber\\
-                                   &\qquad\qquad\rightarrow \{\mathit{active(absentation)}\}\label{eq:clast}
-\end{align}
-$$`
-
----
-class: center, middle, inverse
-
-# Answer Set Programming
-Using ASP to reason about institutional norms
-
----
-
-# InstAL
-
-- DSL for describing institutions
-- based on the situation and event calculi
-- compiles to ansProlog (ASP)
-
----
-
-# InstAL example
-If an agent with the role of donor leaves the stage, it generates the _absentation_ Propp story function in the institution:
-
-```
-leaveStage(X) generates intAbsentation(X)
-    if role(X, dispatcher), activeFunction(interdiction);
-```
-
----
-
-# InstAL example
-
-The absentation institutional event gives the crocodile permission to enter the stage if
-there are any sausages:
-
-```
-intAbsentation(X) initiates perm(enterStage(croc))
-    if onStage(sausages);
-```
-
-It also terminates the permission of the absented agent to leave the stage:
-
-```
-intAbsentation(X) terminates
-                      onStage(X), perm(leaveStage(X));
-```
-
----
-
-# ASP sausages
-
-
-```
-holdsat(perm(tellprotect(dispatcher, villain, item), t0).
-occurred(tellprotect(dispatcher, villain, item), t0).
-initiated(active(interdiction), t1).
-initiated(perm(give(donor, villain, item)), t1).
-terminated(tellprotect(dispatcher, villain, item), t1).
-holdsat(perm(give(donor, villain, item)), t1).
-holdsat(active(interdiction), t1).
-occurred(give(donor, villain, item), t1).
-initiated(active(receipt), t2).
-initiated(perm(leavestage(donor)), t2).
-terminated(perm(give(donor, villain, item)), t2).
-holdsat(active(interdiction), t2).
-holdsat(active(receipt), t2).
-holdsat(perm(leavestage(donor)), t2).
-```
----
-class: center, middle, inverse
-
-# Emotional model
-
-Valence, arousal and dominance
-
----
-class: center
-
-![Default-aligned-image](img/lowdom.png)
-
----
-class: center
-
-![Default-aligned-image](img/meddom.png)
-
----
-class: center
-
-![Default-aligned-image](img/highdom.png)
-
----
-
-class: middle, center, inverse
-
-# Architecture
-
-Linking it all together
-
----
-class: center
-
-
-![Default-aligned-image](img/arch1.png)
-
----
-
-# Bath Sensor Framework
-
-- XMPP publish/subscribe
-- decouples agents from environments
-
-In this case:
-
-- agents: JASON/AgentSpeak/Java
-- institutions: instAL -> ASP, Clojure
-- environment: Coffeescript/WebGL
-
----
-
-# ASP and events
-
-- the list of events so far is used to query the _clingo_ solver
-- clingo solves against the ASP institution description
-- current permissions and obligations are output
-
-
----
-
-# Agent percepts
-
-- permissions and obligations are added to agents as _percepts_
-- agents next actions are constrained by these norms
-- agents choose next action based on goals and emotional state
-- may deviate from norms in extreme emotional state
-
----
-class: inverse
-
-# Summary
-
-- the narrative is described as a set of social norms
-- these norms permit or oblige agents to perform actions that fit with the story
-- but agents have an emotional model
-- their emotional state determines their choice of (permitted) actions
-- at times of extreme emotion, agents can break from the norms of the story
+- TSB-funded project between Sysemia Ltd, University of Bath and the Bishop's Palace in Wells
 
 ---
 class:inverse, middle, center
